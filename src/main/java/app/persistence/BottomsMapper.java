@@ -28,8 +28,8 @@ public class BottomsMapper {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 int bottomsID = rs.getInt("bottomsID");
-                String bottomsName = rs.getString("bottomsName");
-                int bottomsPrice = rs.getInt("bottomsPrice");
+                String bottomsName = rs.getString("bottomname");
+                int bottomsPrice = rs.getInt("bottomprice");
 
                 String formattedOutput = String.format(String.valueOf(bottomsID), bottomsName, bottomsPrice);
                 System.out.println(formattedOutput);

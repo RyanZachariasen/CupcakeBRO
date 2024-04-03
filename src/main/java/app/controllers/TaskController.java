@@ -1,8 +1,10 @@
 package app.controllers;
 
+import app.entities.Bottoms;
 import app.entities.Task;
 import app.entities.User;
 import app.exceptions.DatabaseException;
+import app.persistence.BottomsMapper;
 import app.persistence.ConnectionPool;
 import app.persistence.TaskMapper;
 import io.javalin.Javalin;
@@ -18,7 +20,6 @@ public class TaskController {
         app.post("deletetask", ctx -> deletetask(ctx, connectionPool));
         app.post("edittask", ctx -> edittask(ctx, connectionPool));
         app.post("updatetask", ctx -> updatetask(ctx, connectionPool));
-
     }
 
     private static void updatetask(Context ctx, ConnectionPool connectionPool) {
@@ -95,5 +96,6 @@ public class TaskController {
             ctx.render("task.html");
         }
     }
+
 }
 

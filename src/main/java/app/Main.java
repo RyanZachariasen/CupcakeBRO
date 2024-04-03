@@ -1,9 +1,12 @@
 package app;
 
 import app.config.ThymeleafConfig;
+import app.controllers.BottomsController;
 import app.controllers.UserController;
+import app.exceptions.DatabaseException;
 import app.persistence.BottomsMapper;
 import app.persistence.ConnectionPool;
+import app.persistence.ToppingsMapper;
 import io.javalin.Javalin;
 import io.javalin.rendering.template.JavalinThymeleaf;
 import app.controllers.TaskController;
@@ -33,5 +36,8 @@ public class Main  {
 
         UserController.addRoutes(app,connectionPool);
         TaskController.addRoutes(app,connectionPool);
+        BottomsController.addRoutes(app, connectionPool);
     }
+
+
 }
