@@ -11,24 +11,26 @@ import java.sql.SQLException;
 public class UserMapper
 {
 
-    public static User login(String userName, String password, ConnectionPool connectionPool) throws DatabaseException
+    public static User login(String email, String password, ConnectionPool connectionPool) throws DatabaseException
     {
-        String sql = "select * from users where user_name=? and password=?";
+        String sql = "select * from users where email=? and password=?";
 
         try (
                 Connection connection = connectionPool.getConnection();
                 PreparedStatement ps = connection.prepareStatement(sql)
         )
         {
-            ps.setString(1, userName);
+            ps.setString(1, email);
             ps.setString(2, password);
 
             ResultSet rs = ps.executeQuery();
             if (rs.next())
             {
-                int id = rs.getInt("user_id");
+                int userID = rs.getInt("userID");
                 String role = rs.getString("role");
-                return new User(id, userName, password, role);
+                int orderID = rs.getInt("orderID");
+                int wallet = rs.getInt("wallet");
+                return new User(userID, email, password, role, orderID, wallet);
             } else
             {
                 throw new DatabaseException("Fejl i login. Prøv igen");
@@ -42,7 +44,7 @@ public class UserMapper
 
     public static void createuser(String userName, String password, ConnectionPool connectionPool) throws DatabaseException
     {
-        String sql = "insert into users (user_name, password) values (?,?)";
+        String sql = "insert into users (email, password) values (?,?)";
 
         try (
                 Connection connection = connectionPool.getConnection();

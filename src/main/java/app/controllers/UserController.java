@@ -22,14 +22,14 @@ public class UserController {
 
     private static void creauteUser(Context ctx, ConnectionPool connectionPool) {
         //Hent form parametre
-        String username = ctx.formParam("username");
-        String password1 = ctx.formParam("password1");
+        String email = ctx.formParam("email");
+        String password1 = ctx.formParam("password");
         String password2 = ctx.formParam("password2");
 
         if (password1.equals(password2)) {
             try {
-                UserMapper.createuser(username, password1, connectionPool);
-                ctx.attribute("message", "Account -" + username + "- has been created. \n Please login.");
+                UserMapper.createuser(email, password1, connectionPool);
+                ctx.attribute("message", "Account -" + email + "- has been created. \n Please login.");
                 ctx.render("index.html");
             } catch (DatabaseException e) {
                 ctx.attribute("message", "Username already exists.");
