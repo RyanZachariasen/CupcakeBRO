@@ -18,6 +18,7 @@ public class UserController {
         app.get("logout", ctx -> logout(ctx));
         app.get("createuser", ctx -> ctx.render("createuser.html"));
         app.post("createuser", ctx -> creauteUser(ctx, connectionPool));
+
     }
 
     private static void creauteUser(Context ctx, ConnectionPool connectionPool) {
@@ -55,6 +56,10 @@ public class UserController {
         try {
             User user = UserMapper.login(email, password, connectionPool);
             ctx.sessionAttribute("currentUser", user);
+
+            // Add user's role to the model
+            ctx.attribute("role", user.getRole());
+
             //Hvis ja, send videre til task siden
             ctx.render("homepage.html");
         } catch (DatabaseException e) {
