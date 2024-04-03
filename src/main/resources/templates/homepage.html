@@ -6,7 +6,9 @@
 </head>
 <body>
 <header>FUCK DIG OTTO</header>
-
+<div th:if="${session.currentUser != null && session.currentUser.role == 'admin'}">
+    <p>Welcome, Admin!</p>
+</div>
 
 <tbody>
 <tr th:each="Topping : ${toppingList}">
