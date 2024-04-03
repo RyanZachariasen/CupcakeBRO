@@ -48,23 +48,22 @@ public class UserController {
 
     public static void login(Context ctx, ConnectionPool connectionPool) {
         //Hent form parametre
-        String username = ctx.formParam("username");
+        String email = ctx.formParam("email");
         String password = ctx.formParam("password");
 
         //Check om bruger findes i DB med de angivne username + password
         try {
-            User user = UserMapper.login(username, password, connectionPool);
+            User user = UserMapper.login(email, password, connectionPool);
             ctx.sessionAttribute("currentUser", user);
             //Hvis ja, send videre til task siden
-            List<Task> taskList = TaskMapper.getAllTasksPerUser(user.getUserId(), connectionPool);
-            ctx.attribute("taskList", taskList);
-            ctx.render("task.html");
+            ctx.render("homepage.html");
         } catch (DatabaseException e) {
             //Hvis nej, send tilbage til login side med fejl besked
             ctx.attribute("message", e.getMessage());
-            ctx.render("index.html");
+            ctx.render("frontpage.html");
         }
     }
+
 
 
 }
