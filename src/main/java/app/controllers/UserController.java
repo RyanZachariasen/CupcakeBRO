@@ -1,15 +1,11 @@
 package app.controllers;
 
-import app.entities.Task;
 import app.entities.User;
 import app.exceptions.DatabaseException;
 import app.persistence.ConnectionPool;
-import app.persistence.TaskMapper;
 import app.persistence.UserMapper;
 import io.javalin.Javalin;
 import io.javalin.http.Context;
-
-import java.util.List;
 
 public class UserController {
 
@@ -17,20 +13,20 @@ public class UserController {
         app.post("login", ctx -> login(ctx, connectionPool));
         app.get("logout", ctx -> logout(ctx));
         app.get("createuser", ctx -> ctx.render("createuser.html"));
-        app.post("createuser", ctx -> creauteUser(ctx, connectionPool));
+        app.post("createuser", ctx -> createUser(ctx, connectionPool));
     }
 
-    private static void creauteUser(Context ctx, ConnectionPool connectionPool) {
+    private static void createUser(Context ctx, ConnectionPool connectionPool) {
         //Hent form parametre
         String email = ctx.formParam("email");
-        String password1 = ctx.formParam("password");
+        String password1 = ctx.formParam("password1");
         String password2 = ctx.formParam("password2");
 
         if (password1.equals(password2)) {
             try {
                 UserMapper.createuser(email, password1, connectionPool);
                 ctx.attribute("message", "Account -" + email + "- has been created. \n Please login.");
-                ctx.render("index.html");
+                ctx.render("frontpage.html");
             } catch (DatabaseException e) {
                 ctx.attribute("message", "Username already exists.");
                 ctx.render("createuser.html");
