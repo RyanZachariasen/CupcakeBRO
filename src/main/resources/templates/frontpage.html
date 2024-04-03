@@ -15,6 +15,10 @@
         Olsker Cupcakes!
     </h1>
 </div>
+<div th:if="${session.currentUser != null && session.currentUser.role == 'admin'}">
+    <p>Welcome, Admin!</p>
+</div>
+
 <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
 <a href="createuser.html" th:href="@{createuser}"><button style="width:auto;">Create user</button></a>
 
