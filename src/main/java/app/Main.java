@@ -29,7 +29,7 @@ public class Main  {
 
         // Routing
 
-        app.get("/", ctx ->  ctx.render("index.html"));
+        app.get("/", ctx ->  ctx.render("frontpage.html"));
 
         UserController.addRoutes(app,connectionPool);
         TaskController.addRoutes(app,connectionPool);
