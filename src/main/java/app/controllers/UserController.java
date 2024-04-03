@@ -51,6 +51,9 @@ public class UserController {
         try {
             User user = UserMapper.login(email, password, connectionPool);
             ctx.sessionAttribute("currentUser", user);
+
+            ctx.attribute("role", user.getRole());
+
             //Hvis ja, send videre til task siden
             ctx.render("homepage.html");
         } catch (DatabaseException e) {
