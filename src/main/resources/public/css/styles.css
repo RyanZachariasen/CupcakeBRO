@@ -2,7 +2,10 @@
     width: 100%;
     height: auto;
     border-radius: 8px 8px 0px 0px;
+}
 
+body{
+    background-color: #888888;
 }
 
 /* LOGIN FORM */

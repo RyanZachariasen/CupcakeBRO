@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<link href="../public/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
 <head>
     <meta charset="UTF-8" content="width=device-width, initial-scale=1">
     <title>Create User</title>
@@ -15,6 +16,8 @@
         CREATE USER!
     </h1>
 </div>
+
+<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Create user</button>
 
 <div id="id01" class="modal">
 
@@ -44,6 +47,7 @@
         }
     }
 </script>
-
+    </form>
+</div>
 </body>
 </html>
