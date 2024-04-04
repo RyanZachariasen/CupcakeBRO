@@ -38,6 +38,6 @@ public class Main  {
         UserController.addRoutes(app,connectionPool);
         TaskController.addRoutes(app,connectionPool);
         ToppingsController.addRoutes(app,connectionPool);
-        //BottomsController.addRoutes(app, connectionPool);
+        BottomsController.addRoutes(app, connectionPool);
     }
 }

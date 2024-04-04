@@ -33,6 +33,10 @@ public class User {
         return role;
     }
 
+    public int getWallet() {
+        return wallet;
+    }
+
     @Override
     public String toString() {
         return "User{" +

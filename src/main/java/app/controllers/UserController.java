@@ -7,6 +7,8 @@ import app.persistence.UserMapper;
 import io.javalin.Javalin;
 import io.javalin.http.Context;
 
+import static app.controllers.ToppingsController.renderHomePage;
+
 public class UserController {
 
     public static void addRoutes(Javalin app, ConnectionPool connectionPool) {
@@ -54,14 +56,17 @@ public class UserController {
 
             ctx.attribute("role", user.getRole());
 
-            ctx.render("homepage.html");
+            ctx.attribute("wallet", user.getWallet());
+
+
+            renderHomePage(ctx, connectionPool);
+            //ctx.redirect("/homepage");
         } catch (DatabaseException e) {
             //Hvis nej, send tilbage til login side med fejl besked
             ctx.attribute("message", e.getMessage());
             ctx.render("frontpage.html");
         }
     }
-
 
 
 }
