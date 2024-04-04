@@ -144,6 +144,26 @@ table td, table th {
     padding: 10px;
 }
 
+table {
+    border-collapse: collapse;
+    width: 45%; /* Adjust as needed */
+}
+
+th, td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
 table tr:nth-child(even) {
     background-color: silver;
+}
+
+.tables-container {
+    display: flex;
+    justify-content: space-between;
 }

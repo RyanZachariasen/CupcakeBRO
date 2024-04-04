@@ -12,12 +12,98 @@
             <img alt="logo" src="../public/images/cupcakelogo.png" th:src="@{/images/cupcakelogo.png}">
         </a>
     </header>
+
+    <div class="tables-container">
+        <table>
+            <caption>The Bottoms</caption>
+            <thead>
+            <tr>
+                <th>Bottom</th>
+                <th>Price (DKK)</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Chocolate</td>
+                <td>5.00 DKK</td>
+            </tr>
+            <tr>
+                <td>Vanilla</td>
+                <td>5.00 DKK</td>
+            </tr>
+            <tr>
+                <td>Nutmeg</td>
+                <td>5.00 DKK</td>
+            </tr>
+            <tr>
+                <td>Pistachio</td>
+                <td>6.00 DKK</td>
+            </tr>
+            <tr>
+                <td>Almond</td>
+                <td>7.00 DKK</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <table>
+            <caption>The Toppings</caption>
+            <thead>
+            <tr>
+                <th>Topping</th>
+                <th>Price (DKK)</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Chocolate</td>
+                <td>5.00 DKK</td>
+            </tr>
+            <tr>
+                <td>Blueberry</td>
+                <td>5.00 DKK</td>
+            </tr>
+            <tr>
+                <td>Raspberry</td>
+                <td>5.00 DKK</td>
+            </tr>
+            <tr>
+                <td>Crispy</td>
+                <td>6.00 DKK</td>
+            </tr>
+            <tr>
+                <td>Strawberry</td>
+                <td>6.00 DKK</td>
+            </tr>
+            <tr>
+                <td>Rum/Raisin</td>
+                <td>7.00 DKK</td>
+            </tr>
+            <tr>
+                <td>Orange</td>
+                <td>8.00 DKK</td>
+            </tr>
+            <tr>
+                <td>Lemon</td>
+                <td>8.00 DKK</td>
+            </tr>
+            <tr>
+                <td>Blue cheese</td>
+                <td>9.00 DKK</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
     <h1>
         Olsker Cupcakes!
     </h1>
 </div>
 <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
 <a href="createuser.html" th:href="@{createuser}"><button style="width:auto;">Create user</button></a>
+
+
 
 
 <div id="id01" class="modal">
@@ -64,6 +150,7 @@
         }
     }
 </script>
+
 
 </body>
 </html>
