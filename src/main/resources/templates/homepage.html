@@ -14,36 +14,16 @@
     <p>Wallet Balance: <span th:text="${session.currentUser.wallet}"></span></p>
 </div>
 
-<a href="/bottoms"><button style="width:auto;">View Bottoms</button></a>
-<table>
-    <thead>
-    <tr>
-        <th>Topping name</th>
-        <th>Topping Price</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="topping : ${toppingsList}">
-        <td th:text="${topping.toppingname}"></td>
-        <td th:text="${topping.toppingprice}"></td>
-    </tr>
-    </tbody>
-</table>
 
-<table>
-    <thead>
-    <tr>
-        <th>Bottom Name</th>
-        <th>Bottom Price</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="bottom : ${bottomsList}">
-        <td th:text="${bottom.bottomsName}"></td>
-        <td th:text="${bottom.bottomsPrice}"></td>
-    </tr>
-    </tbody>
-</table>
+<select class="form-control-toppings" id="dropDownList">
+    <option value="0">select option</option>
+    <option th:each="topping : ${toppingsList}" th:text="${topping.toppingname +' - '+topping.toppingprice}" th:value="${topping.toppingprice}"></option>
+</select>
+
+<select class="form-control" id="dropDownListBottom">
+    <option value="0">select option</option>
+    <option th:each="bottom : ${bottomsList}" th:text="${bottom.bottomsName +' - '+ bottom.bottomsPrice}" th:value="${bottom.bottomsPrice}"></option>
+</select>
 
 
 </body>
