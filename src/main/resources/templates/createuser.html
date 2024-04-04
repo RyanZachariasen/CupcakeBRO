@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<link href="../public/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
 <head>
     <meta charset="UTF-8" content="width=device-width, initial-scale=1">
     <title>Create User</title>
@@ -16,6 +17,8 @@
     </h1>
 </div>
 
+<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Create user</button>
+
 <div id="id01" class="modal">
 
     <form class="modal-content animate" action="/templates/homepage.html" method="post">
@@ -31,7 +34,8 @@
             <input type="password" name="password2" placeholder="Enter new password again">
             <button type="submit" formaction="/createuser">Create user</button>
         </div>
-
+    </form>
+</div>
 
 <script>
     // Get the modal
@@ -44,6 +48,7 @@
         }
     }
 </script>
-
+    </form>
+</div>
 </body>
 </html>

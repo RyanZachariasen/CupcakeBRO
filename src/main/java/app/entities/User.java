@@ -35,6 +35,10 @@ public class User {
         return wallet;
     }
 
+    public void setWallet(int wallet) {
+        this.wallet = wallet;
+    }
+
     @Override
     public String toString() {
         return "User{" +

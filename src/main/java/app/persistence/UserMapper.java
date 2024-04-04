@@ -69,4 +69,23 @@ public class UserMapper
             throw new DatabaseException(msg, e.getMessage());
         }
     }
+
+    public static void updateWallet(int userID, int newWalletBalance, ConnectionPool connectionPool) throws DatabaseException {
+        String sql = "update users set wallet = ? where 'userID' = ?";
+
+        try (
+                Connection connection = connectionPool.getConnection();
+                PreparedStatement ps = connection.prepareStatement(sql)
+        ) {
+            ps.setInt(1, newWalletBalance);
+            ps.setInt(2, userID);
+
+            int rowsAffected = ps.executeUpdate();
+            if (rowsAffected != 1) {
+                throw new DatabaseException("Fejl ved opdatering af wallet balance");
+            }
+        } catch (SQLException e) {
+            throw new DatabaseException("Databasefejl under opdatering af wallet balance");
+        }
+    }
 }
