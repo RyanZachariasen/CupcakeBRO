@@ -1,10 +1,13 @@
 package app;
 
 import app.config.ThymeleafConfig;
+import app.controllers.BottomsController;
 import app.controllers.ToppingsController;
 import app.controllers.UserController;
+import app.exceptions.DatabaseException;
 import app.persistence.BottomsMapper;
 import app.persistence.ConnectionPool;
+import app.persistence.ToppingsMapper;
 import io.javalin.Javalin;
 import io.javalin.rendering.template.JavalinThymeleaf;
 import app.controllers.TaskController;

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List of Bottoms</title>
+</head>
+<body>
+<h1>List of Bottoms</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Bottom ID</th>
+        <th>Bottom Name</th>
+        <th>Bottom Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Iterate over the bottomsList and display bottoms -->
+    <tr th:each="bottom : ${bottomsList}">
+        <td th:text="${bottom.bottomsID}"></td>
+        <td th:text="${bottom.bottomsName}"></td>
+        <td th:text="${bottom.bottomsPrice}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

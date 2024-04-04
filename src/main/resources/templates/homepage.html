@@ -9,6 +9,12 @@
 <div th:if="${session.currentUser != null && session.currentUser.role == 'admin'}">
     <p>Welcome, Admin!</p>
 </div>
+<a href="/bottoms"><button style="width:auto;">View Bottoms</button></a>
+<tbody>
+<tr th:each="Topping : ${toppingList}">
+    <td th:text="${ToppingStat.size}"></td>
+</tr>
+</tbody>
 
 <table>
 
