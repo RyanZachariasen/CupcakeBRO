@@ -81,11 +81,11 @@ public class UserController {
         currentUser.setWallet(newBalance);
 
         try {
-            UserMapper.updateWallet(currentUser.getUserId(), newBalance, connectionPool);
-            ctx.redirect("/homepage");
+            UserMapper.updateWallet(currentUser.getEmail(), newBalance, connectionPool);
+            ctx.render("homepage.html");
         } catch (DatabaseException e) {
             ctx.attribute("message", "Kunne ikke tilføje penge til wallet.");
-            ctx.render("homepage.html");
+            //ctx.render("homepage.html");
         }
     }
 }

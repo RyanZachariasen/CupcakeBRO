@@ -15,7 +15,7 @@
 <div th:if="${session.currentUser != null}">
     <p>Wallet Balance: <span th:text="${session.currentUser.wallet}"></span></p>
 
-    <form action="/addMoneyToWallet" method="post">
+    <form th:action="@{/addMoneyToWallet}" method="post">
         <label for="amount">Add Money:</label>
         <input type="number" id="amount" name="amount" required>
         <button type="submit">Add</button>

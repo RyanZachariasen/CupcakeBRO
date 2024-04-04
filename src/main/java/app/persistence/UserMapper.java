@@ -70,15 +70,15 @@ public class UserMapper
         }
     }
 
-    public static void updateWallet(int userID, int newWalletBalance, ConnectionPool connectionPool) throws DatabaseException {
-        String sql = "update users set wallet = ? where 'userID' = ?";
+    public static void updateWallet(String email, int newWalletBalance, ConnectionPool connectionPool) throws DatabaseException {
+        String sql = "update users set wallet = ? where email = ?";
 
         try (
                 Connection connection = connectionPool.getConnection();
                 PreparedStatement ps = connection.prepareStatement(sql)
         ) {
             ps.setInt(1, newWalletBalance);
-            ps.setInt(2, userID);
+            ps.setString(2, email);
 
             int rowsAffected = ps.executeUpdate();
             if (rowsAffected != 1) {
