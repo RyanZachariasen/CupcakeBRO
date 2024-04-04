@@ -31,9 +31,6 @@ public class BottomsMapper {
                 String bottomsName = rs.getString("bottomname");
                 int bottomsPrice = rs.getInt("bottomprice");
 
-                String formattedOutput = String.format(String.valueOf(bottomsID), bottomsName, bottomsPrice);
-                System.out.println(formattedOutput);
-
                 Bottoms bottoms = new Bottoms(bottomsID, bottomsName, bottomsPrice);
                 bottomsList.add(bottoms);
             }

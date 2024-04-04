@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Homepage</title>
+    <link rel="stylesheet" href="../public/css/styles.css" th:href="@{/css/styles.css}">
 </head>
 <body>
-<header>FUCK DIG OTTO</header>
+<header>Welcome to Olsker Cupcakes!</header>
+
 <div th:if="${session.currentUser != null && session.currentUser.role == 'admin'}">
     <p>Welcome, Admin!</p>
 </div>
@@ -20,24 +22,15 @@
     </form>
 </div>
 
-<a href="/bottoms"><button style="width:auto;">View Bottoms</button></a>
-<tbody>
-<tr th:each="Topping : ${toppingList}">
-    <td th:text="${ToppingStat.size}"></td>
-</tr>
-</tbody>
 
 <table>
-
     <thead>
     <tr>
-        <th>Topping name</th>
+        <th>Topping Name</th>
         <th>Topping Price</th>
     </tr>
     </thead>
-
     <tbody>
-
     <tr th:each="topping : ${toppingsList}">
         <td th:text="${topping.toppingname}"></td>
         <td th:text="${topping.toppingprice}"></td>
@@ -45,6 +38,20 @@
     </tbody>
 </table>
 
+<table>
+    <thead>
+    <tr>
+        <th>Bottom Name</th>
+        <th>Bottom Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="bottom : ${bottomsList}">
+        <td th:text="${bottom.bottomsName}"></td>
+        <td th:text="${bottom.bottomsPrice}"></td>
+    </tr>
+    </tbody>
+</table>
 
 </body>
 </html>

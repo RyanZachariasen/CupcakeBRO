@@ -19,7 +19,7 @@ public class BottomsController {
         try {
             List<Bottoms> bottomsList = BottomsMapper.getAllBottoms(connectionPool);
             ctx.attribute("bottomsList", bottomsList);
-            ctx.render("bottoms.html");
+            ctx.render("homepage.html");
         } catch (DatabaseException e) {
             ctx.status(500).result("Error fetching bottoms from database: " + e.getMessage());
         }

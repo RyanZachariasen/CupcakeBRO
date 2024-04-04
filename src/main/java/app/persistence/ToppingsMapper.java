@@ -24,6 +24,7 @@ public class ToppingsMapper {
                 int toppingsID = rs.getInt("toppingsID");
                 String toppingname = rs.getString("toppingname");
                 int toppingprice = rs.getInt("toppingprice");
+
                 toppingList.add(new Toppings(toppingsID, toppingname, toppingprice));
             }
         } catch (SQLException e) {
