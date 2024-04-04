@@ -5,15 +5,13 @@ public class User {
     private String email;
     private String password;
     private String role;
-    private int orderID;
     private int wallet;
 
-    public User(int userId, String email, String password, String role, int orderID, int wallet) {
+    public User(int userId, String email, String password, String role,  int wallet) {
         this.userId = userId;
         this.email = email;
         this.password = password;
         this.role = role;
-        this.orderID = orderID;
         this.wallet = wallet;
     }
 
@@ -44,7 +42,6 @@ public class User {
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", role='" + role + '\'' +
-                ", orderID=" + orderID +
                 ", wallet=" + wallet +
                 '}';
     }
