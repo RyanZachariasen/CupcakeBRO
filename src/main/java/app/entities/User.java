@@ -1,22 +1,22 @@
 package app.entities;
 
 public class User {
-    private int userId;
+    private int userID;
     private String email;
     private String password;
     private String role;
     private int wallet;
 
-    public User(int userId, String email, String password, String role,  int wallet) {
-        this.userId = userId;
+    public User(int userID, String email, String password, String role,  int wallet) {
+        this.userID = userID;
         this.email = email;
         this.password = password;
         this.role = role;
         this.wallet = wallet;
     }
 
-    public int getUserId() {
-        return userId;
+    public int getUserID() {
+        return userID;
     }
 
     public String getEmail() {
@@ -42,7 +42,7 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "userId=" + userId +
+                "userId=" + userID +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", role='" + role + '\'' +

@@ -16,8 +16,10 @@ public class UserController {
         app.get("logout", ctx -> logout(ctx));
         app.get("createuser", ctx -> ctx.render("createuser.html"));
         app.post("createuser", ctx -> createUser(ctx, connectionPool));
-        app.get("addMoneyToWallet", ctx -> ctx.render("homepage.html"));
+        app.get("addMoneyToWallet", ctx -> ctx.render("wallet.html"));
         app.post("addMoneyToWallet", ctx -> addMoneyToWallet(ctx, connectionPool));
+        app.get("wallet", ctx -> ctx.render("wallet.html"));
+        app.get("homepage", ctx -> ctx.render("homepage.html"));
     }
 
     private static void createUser(Context ctx, ConnectionPool connectionPool) {
@@ -82,7 +84,7 @@ public class UserController {
 
         try {
             UserMapper.updateWallet(currentUser.getEmail(), newBalance, connectionPool);
-            ctx.render("homepage.html");
+            ctx.render("wallet.html");
         } catch (DatabaseException e) {
             ctx.attribute("message", "Kunne ikke tilføje penge til wallet.");
             //ctx.render("homepage.html");

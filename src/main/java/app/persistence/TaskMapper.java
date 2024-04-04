@@ -51,14 +51,14 @@ public class TaskMapper
         {
             ps.setString(1, taskName);
             ps.setBoolean(2, false);
-            ps.setInt(3, user.getUserId());
+            ps.setInt(3, user.getUserID());
             int rowsAffected = ps.executeUpdate();
             if (rowsAffected == 1)
             {
                 ResultSet rs = ps.getGeneratedKeys();
                 rs.next();
                 int newId = rs.getInt(1);
-                newTask = new Task(newId, taskName, false, user.getUserId());
+                newTask = new Task(newId, taskName, false, user.getUserID());
             } else
             {
                 throw new DatabaseException("Fejl under indsætning af task: " + taskName);

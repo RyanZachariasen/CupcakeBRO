@@ -12,18 +12,9 @@
     <p>Welcome, Admin!</p>
 </div>
 
-<div th:if="${session.currentUser != null}">
-    <p>Wallet Balance: <span th:text="${session.currentUser.wallet}"></span></p>
+<a href="wallet.html" th:href="@{wallet}"><button style="width:auto;">Add money to wallet</button></a>
 
-    <form th:action="@{/addMoneyToWallet}" method="post">
-        <label for="amount">Add Money:</label>
-        <input type="number" id="amount" name="amount" required>
-        <button type="submit">Add</button>
-    </form>
-</div>
-
-
-
+<div>
 <select class="form-control-toppings" id="dropDownList">
     <option value="0">select option</option>
     <option th:each="topping : ${toppingsList}" th:text="${topping.toppingname +' - '+topping.toppingprice}" th:value="${topping.toppingprice}"></option>
@@ -33,7 +24,7 @@
     <option value="0">select option</option>
     <option th:each="bottom : ${bottomsList}" th:text="${bottom.bottomsName +' - '+ bottom.bottomsPrice}" th:value="${bottom.bottomsPrice}"></option>
 </select>
-
+</div>
 
 
 </body>

@@ -28,7 +28,7 @@ public class TaskController {
             int taskId = Integer.parseInt(ctx.formParam("taskId"));
             String taskName = ctx.formParam("taskname");
             TaskMapper.update(taskId, taskName, connectionPool);
-            List<Task> taskList = TaskMapper.getAllTasksPerUser(user.getUserId(), connectionPool);
+            List<Task> taskList = TaskMapper.getAllTasksPerUser(user.getUserID(), connectionPool);
             ctx.attribute("taskList", taskList);
             ctx.render("task.html");
         } catch (DatabaseException | NumberFormatException e) {
@@ -55,7 +55,7 @@ public class TaskController {
         try {
             int taskId = Integer.parseInt(ctx.formParam("taskId"));
             TaskMapper.delete(taskId, connectionPool);
-            List<Task> taskList = TaskMapper.getAllTasksPerUser(user.getUserId(), connectionPool);
+            List<Task> taskList = TaskMapper.getAllTasksPerUser(user.getUserID(), connectionPool);
             ctx.attribute("taskList", taskList);
             ctx.render("task.html");
         } catch (DatabaseException | NumberFormatException e) {
@@ -69,7 +69,7 @@ public class TaskController {
         try {
             int taskId = Integer.parseInt(ctx.formParam("taskId"));
             TaskMapper.setDoneTo(done, taskId, connectionPool);
-            List<Task> taskList = TaskMapper.getAllTasksPerUser(user.getUserId(), connectionPool);
+            List<Task> taskList = TaskMapper.getAllTasksPerUser(user.getUserID(), connectionPool);
             ctx.attribute("taskList", taskList);
             ctx.render("task.html");
         } catch (DatabaseException | NumberFormatException e) {
@@ -85,7 +85,7 @@ public class TaskController {
         try {
             if (!taskName.isEmpty()) {
                 Task newTask = TaskMapper.addTask(user, taskName, connectionPool);
-                List<Task> taskList = TaskMapper.getAllTasksPerUser(user.getUserId(), connectionPool);
+                List<Task> taskList = TaskMapper.getAllTasksPerUser(user.getUserID(), connectionPool);
                 ctx.attribute("taskList", taskList);
                 ctx.render("task.html");
             } else {
