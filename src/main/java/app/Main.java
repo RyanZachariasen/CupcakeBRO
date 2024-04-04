@@ -4,13 +4,17 @@ import app.config.ThymeleafConfig;
 import app.controllers.BottomsController;
 import app.controllers.ToppingsController;
 import app.controllers.UserController;
+import app.entities.Order;
 import app.exceptions.DatabaseException;
 import app.persistence.BottomsMapper;
 import app.persistence.ConnectionPool;
+import app.persistence.OrderMapper;
 import app.persistence.ToppingsMapper;
 import io.javalin.Javalin;
 import io.javalin.rendering.template.JavalinThymeleaf;
 import app.controllers.TaskController;
+
+import java.util.List;
 
 
 public class Main  {
@@ -20,8 +24,7 @@ public class Main  {
     private static final String DB = "olskercupcakes";
     private static final ConnectionPool connectionPool = ConnectionPool.getInstance(USER, PASSWORD, URL, DB);
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         // Initializing Javalin and Jetty webserver
 
         Javalin app = Javalin.create(config -> {
@@ -31,11 +34,12 @@ public class Main  {
 
         // Routing
 
-        app.get("/", ctx ->  ctx.render("frontpage.html"));
+        app.get("/", ctx -> ctx.render("frontpage.html"));
 
-        UserController.addRoutes(app,connectionPool);
-        TaskController.addRoutes(app,connectionPool);
-        ToppingsController.addRoutes(app,connectionPool);
+        UserController.addRoutes(app, connectionPool);
+        TaskController.addRoutes(app, connectionPool);
+        ToppingsController.addRoutes(app, connectionPool);
         BottomsController.addRoutes(app, connectionPool);
     }
 }
+
