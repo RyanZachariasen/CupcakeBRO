@@ -9,6 +9,11 @@
 <div th:if="${session.currentUser != null && session.currentUser.role == 'admin'}">
     <p>Welcome, Admin!</p>
 </div>
+
+<div th:if="${session.currentUser != null}">
+    <p>Wallet Balance: <span th:text="${session.currentUser.wallet}"></span></p>
+</div>
+
 <a href="/bottoms"><button style="width:auto;">View Bottoms</button></a>
 <tbody>
 <tr th:each="Topping : ${toppingList}">

@@ -54,6 +54,8 @@ public class UserController {
 
             ctx.attribute("role", user.getRole());
 
+            ctx.attribute("wallet", user.getWallet());
+
             ctx.render("homepage.html");
         } catch (DatabaseException e) {
             //Hvis nej, send tilbage til login side med fejl besked
