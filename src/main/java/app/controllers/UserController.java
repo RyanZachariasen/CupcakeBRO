@@ -54,7 +54,6 @@ public class UserController {
 
             ctx.attribute("role", user.getRole());
 
-            //Hvis ja, send videre til task siden
             ctx.render("homepage.html");
         } catch (DatabaseException e) {
             //Hvis nej, send tilbage til login side med fejl besked

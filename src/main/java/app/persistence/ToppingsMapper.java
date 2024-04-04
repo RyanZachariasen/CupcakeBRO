@@ -23,11 +23,11 @@ public class ToppingsMapper {
             while (rs.next()) {
                 int toppingsID = rs.getInt("toppingsID");
                 String toppingname = rs.getString("toppingname");
-                int toppingprice = rs.getInt("toppingprice"); // Corrected variable name
+                int toppingprice = rs.getInt("toppingprice");
                 toppingList.add(new Toppings(toppingsID, toppingname, toppingprice));
             }
         } catch (SQLException e) {
-            throw new DatabaseException("Fejl!!!!", e.getMessage());
+            throw new DatabaseException("Fejl i toppingsmapper", e.getMessage());
         }
         return toppingList;
     }

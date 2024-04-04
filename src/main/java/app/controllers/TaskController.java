@@ -18,7 +18,6 @@ public class TaskController {
         app.post("deletetask", ctx -> deletetask(ctx, connectionPool));
         app.post("edittask", ctx -> edittask(ctx, connectionPool));
         app.post("updatetask", ctx -> updatetask(ctx, connectionPool));
-
     }
 
     private static void updatetask(Context ctx, ConnectionPool connectionPool) {

@@ -10,11 +10,23 @@
     <p>Welcome, Admin!</p>
 </div>
 
-<tbody>
-<tr th:each="Topping : ${toppingList}">
-    <td th:text="${ToppingStat.size}"></td>
-</tr>
-</tbody>
+<table>
+
+    <thead>
+    <tr>
+        <th>Topping name</th>
+        <th>Topping Price</th>
+    </tr>
+    </thead>
+
+    <tbody>
+
+    <tr th:each="topping : ${toppingsList}">
+        <td th:text="${topping.toppingname}"></td>
+        <td th:text="${toppingStat.size}"></td>
+    </tr>
+    </tbody>
+</table>
 
 
 </body>

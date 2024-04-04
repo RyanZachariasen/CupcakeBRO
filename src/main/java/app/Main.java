@@ -1,6 +1,7 @@
 package app;
 
 import app.config.ThymeleafConfig;
+import app.controllers.ToppingsController;
 import app.controllers.UserController;
 import app.persistence.BottomsMapper;
 import app.persistence.ConnectionPool;
@@ -33,5 +34,7 @@ public class Main  {
 
         UserController.addRoutes(app,connectionPool);
         TaskController.addRoutes(app,connectionPool);
+        ToppingsController.addRoutes(app,connectionPool);
+        //BottomsController.addRoutes(app, connectionPool);
     }
 }
