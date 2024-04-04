@@ -16,6 +16,8 @@ public class UserController {
         app.get("logout", ctx -> logout(ctx));
         app.get("createuser", ctx -> ctx.render("createuser.html"));
         app.post("createuser", ctx -> createUser(ctx, connectionPool));
+        app.get("addMoneyToWallet", ctx -> ctx.render("homepage.html"));
+        app.post("addMoneyToWallet", ctx -> addMoneyToWallet(ctx, connectionPool));
     }
 
     private static void createUser(Context ctx, ConnectionPool connectionPool) {
@@ -68,5 +70,22 @@ public class UserController {
         }
     }
 
+    public static void addMoneyToWallet(Context ctx, ConnectionPool connectionPool) {
 
+        int amount = Integer.parseInt(ctx.formParam("amount"));
+
+        User currentUser = ctx.sessionAttribute("currentUser");
+
+        int currentBalance = currentUser.getWallet();
+        int newBalance = currentBalance + amount;
+        currentUser.setWallet(newBalance);
+
+        try {
+            UserMapper.updateWallet(currentUser.getUserId(), newBalance, connectionPool);
+            ctx.redirect("/homepage");
+        } catch (DatabaseException e) {
+            ctx.attribute("message", "Kunne ikke tilføje penge til wallet.");
+            ctx.render("homepage.html");
+        }
+    }
 }
