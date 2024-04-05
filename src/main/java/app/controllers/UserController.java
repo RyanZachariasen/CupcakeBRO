@@ -20,6 +20,7 @@ public class UserController {
         app.post("addMoneyToWallet", ctx -> addMoneyToWallet(ctx, connectionPool));
         app.get("wallet", ctx -> ctx.render("wallet.html"));
         app.get("homepage", ctx -> ctx.render("homepage.html"));
+        app.get("adminpage", ctx -> ctx.render("adminpage.html"));
     }
 
     private static void createUser(Context ctx, ConnectionPool connectionPool) {
@@ -64,7 +65,7 @@ public class UserController {
 
 
             renderHomePage(ctx, connectionPool);
-            //ctx.redirect("/homepage");
+            ctx.render("/homepage");
         } catch (DatabaseException e) {
             //Hvis nej, send tilbage til login side med fejl besked
             ctx.attribute("message", e.getMessage());

@@ -14,6 +14,10 @@
 
 <a href="wallet.html" th:href="@{wallet}"><button style="width:auto;">Add money to wallet</button></a>
 
+<div th:if="${session.currentUser != null && session.currentUser.role == 'admin'}">
+    <a href="adminpage.html" th:href="@{adminpage}"><button style="width:auto;"> Admin page </button></a>
+</div>
+
 <div>
 <select class="form-control-toppings" id="dropDownList">
     <option value="0">select option</option>

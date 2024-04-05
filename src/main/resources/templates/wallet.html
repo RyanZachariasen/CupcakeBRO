@@ -20,13 +20,18 @@
     <form th:action="@{/addMoneyToWallet}" method="post">
         <label for="amount">Add Money:</label>
         <input type="number" id="amount" name="amount" required>
-        <button type="submit">Add</button>
+        <button style="width:auto;" type="submit">Add</button>
     </form>
 </div>
 
-<div th:if="${session.currentUser != null}">
-    <a href="homepage.html" th:href="@{homepage}"><button style="width:auto;">Go back to Homepage</button></a>
-</div>
+<button style="width:auto;" onclick = "goBack()">Go back</button>
+
+<script>
+    function goBack() {
+        window.history.back();
+        window.history.back();
+    }
+</script>
 
 </body>
 </html>
