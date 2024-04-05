@@ -54,17 +54,34 @@ public class OrderMapper {
             while (rs.next()) {
                 int orderID = rs.getInt("orderID");
                 int userIDFromDB = rs.getInt("userID");
-                // Assuming Order class has a constructor that takes orderID and userID
                 Order order = new Order(orderID, userIDFromDB);
                 orderList.add(order);
             }
         } catch (SQLException e) {
-            throw new DatabaseException("Database error while fetching orders", e.getMessage());
+            throw new DatabaseException("Database fejl med at hente orders", e.getMessage());
         }
 
         return orderList;
     }
 
 
+        public static int createOrderID(int userID, ConnectionPool connectionPool) throws DatabaseException {
+            String sql = "INSERT INTO \"order\" (\"userID\") VALUES (?) RETURNING \"orderID\"";
+
+            try (
+                    Connection connection = connectionPool.getConnection();
+                    PreparedStatement ps = connection.prepareStatement(sql)
+            ) {
+                ps.setInt(1, userID);
+                ResultSet rs = ps.executeQuery();
+                if (rs.next()) {
+                    return rs.getInt("orderID");
+                } else {
+                    throw new DatabaseException("ingen orderID returned");
+                }
+            } catch (SQLException e) {
+                throw new DatabaseException("Databasefejl", e.getMessage());
+            }
+        }
 
 }
