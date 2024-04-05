@@ -6,10 +6,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+
 public class OrderlineMapper {
-    int quantity;
-    int toppingsID;
-    int bottomsID;
+    static int quantity;
+    static int toppingsID;
+    static int bottomsID;
     int orderID;
 
 
@@ -43,18 +44,5 @@ public class OrderlineMapper {
         }
     }
 
-    public static void orderOrderline(){
-        try {
-            int orderID = OrderMapper.createOrderID(userID, connectionPool);
-
-            OrderlineMapper.createOrderline(quantity, toppingsID, bottomsID, orderID, connectionPool);
-
-        } catch (DatabaseException e) {
-            // Handle exception
-            e.printStackTrace(); // This will print the exception details to the console
-        }
-    }
-
-    }
 
 }
