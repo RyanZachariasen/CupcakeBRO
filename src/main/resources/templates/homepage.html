@@ -19,10 +19,11 @@
 </div>
 
 <div>
-<select class="form-control-toppings" id="dropDownList">
-    <option value="0">select option</option>
-    <option th:each="topping : ${toppingsList}" th:text="${topping.toppingname +' - '+topping.toppingprice}" th:value="${topping.toppingprice}"></option>
-</select>
+    <form th:action="@{/makecupcake}" method="post">
+        <select class="form-control-toppings" id="dropDownList" name="toppingsID">
+            <option value="0">select toppings</option>
+            <option th:each="topping : ${toppingsList}" th:text="${topping.toppingname +' - '+topping.toppingprice}" th:value="${topping.toppingsID}"></option>
+        </select>
 
         <select class="form-control-bottoms" id="dropDownListBottom" name="bottomsID">
             <option value="0">Select bottoms</option>
