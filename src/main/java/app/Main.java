@@ -1,15 +1,12 @@
 package app;
 
 import app.config.ThymeleafConfig;
-import app.controllers.BottomsController;
-import app.controllers.ToppingsController;
-import app.controllers.UserController;
+import app.controllers.*;
 import app.entities.Order;
 import app.exceptions.DatabaseException;
 import app.persistence.*;
 import io.javalin.Javalin;
 import io.javalin.rendering.template.JavalinThymeleaf;
-import app.controllers.TaskController;
 
 import java.util.List;
 
@@ -37,7 +34,7 @@ public class Main {
         TaskController.addRoutes(app, connectionPool);
         ToppingsController.addRoutes(app, connectionPool);
         BottomsController.addRoutes(app, connectionPool);
-
+        OrderController.addRoutes(app,connectionPool);
       /*  int userID = 3; // Example userID
         int quantity = 2; // Example quantity
         int toppingsID = 1; // Example toppingsID

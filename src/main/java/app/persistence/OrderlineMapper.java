@@ -6,7 +6,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+
 public class OrderlineMapper {
+    static int quantity;
+    static int toppingsID;
+    static int bottomsID;
+    int orderID;
 
 
     public static void createOrderline(int quantity, int toppingsID, int bottomsID, int orderID, ConnectionPool connectionPool) throws DatabaseException
@@ -39,19 +44,5 @@ public class OrderlineMapper {
         }
     }
 
-    public static void orderOrderline(int quantity, int toppingsID, int bottomsID, int userID, ConnectionPool connectionPool ){
-
-        try {
-            int orderID = OrderMapper.createOrderID(userID, connectionPool);
-
-            OrderlineMapper.createOrderline(quantity, toppingsID, bottomsID, orderID, connectionPool);
-
-        } catch (DatabaseException e) {
-            // Handle exception
-            e.printStackTrace(); // This will print the exception details to the console
-        }
-    }
-
-    }
 
 }

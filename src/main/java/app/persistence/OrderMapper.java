@@ -83,5 +83,17 @@ public class OrderMapper {
                 throw new DatabaseException("Databasefejl", e.getMessage());
             }
         }
+    public static void orderOrderline(int userID, int quantity, int toppingsID, int bottomsID, ConnectionPool connectionPool){
+        try {
+            int orderID = OrderMapper.createOrderID(userID, connectionPool);
+
+            OrderlineMapper.createOrderline(quantity, toppingsID, bottomsID, orderID, connectionPool);
+
+        } catch (DatabaseException e) {
+            // Handle exception
+            e.printStackTrace(); // This will print the exception details to the console
+        }
+    }
 
 }
+
