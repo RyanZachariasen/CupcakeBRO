@@ -7,6 +7,9 @@ import app.persistence.UserMapper;
 import io.javalin.Javalin;
 import io.javalin.http.Context;
 
+import java.util.ArrayList;
+import java.util.Objects;
+
 import static app.controllers.ToppingsController.renderHomePage;
 
 public class UserController {
@@ -29,18 +32,24 @@ public class UserController {
         String password1 = ctx.formParam("password1");
         String password2 = ctx.formParam("password2");
 
-        if (password1.equals(password2)) {
-            try {
-                UserMapper.createuser(email, password1, connectionPool);
-                ctx.attribute("message", "Account -" + email + "- has been created. \n Please login.");
-                ctx.render("frontpage.html");
-            } catch (DatabaseException e) {
-                ctx.attribute("message", "Username already exists.");
+        if (validatePassword(password1) && checkEmailAt(Objects.requireNonNull(email))) {
+            if (password1.equals(password2)) {
+                try {
+                    UserMapper.createuser(email, password1, connectionPool);
+                    ctx.attribute("message", "Account -" + email + "- has been created. \n Please login.");
+                    ctx.render("frontpage.html");
+                } catch (DatabaseException e) {
+                    ctx.attribute("message", "Username already exists.");
+                    ctx.render("createuser.html");
+                }
+            } else {
+                ctx.attribute("message", "The passwords need to match.");
                 ctx.render("createuser.html");
             }
+
         } else {
-            ctx.attribute("message", "The passwords need to match.");
-            ctx.render("createuser.html");
+        ctx.attribute("message", "Email is not valid or password does not meet requirements.");
+        ctx.render("createuser.html");
         }
     }
 
@@ -91,4 +100,69 @@ public class UserController {
             //ctx.render("homepage.html");
         }
     }
+
+    public static boolean checkUpperCase(String str) {
+        char c;
+        boolean upperCaseFlag = false;
+        boolean lowerCaseFlag = false;
+        for (int i = 0; i < str.length(); i++) {
+            c = str.charAt(i);
+            if (Character.isUpperCase(c)) {
+                upperCaseFlag = true;
+            } else if (Character.isLowerCase(c)) {
+                lowerCaseFlag = true;
+            }
+            if (upperCaseFlag && lowerCaseFlag)
+                return true;
+        }
+        System.out.println("Kodeordet skal have et stort bogstav");
+        return false;
+    }
+
+    public static boolean checkLength(String str) {
+
+        if (str.length() < 129 && str.length() > 7) {
+            return true;
+        } else {
+            System.out.println("Kodeordet skal mindst være 8 karakterer langt");
+            return false;
+        }
+    }
+
+    public static boolean checkNumeric(String str) {
+        char c;
+        boolean numberFlag = false;
+        for (int i = 0; i < str.length(); i++) {
+            c = str.charAt(i);
+            if (Character.isDigit(c)) {
+                return true;
+            }
+        }
+
+        if (!numberFlag) {
+            System.out.println("Kodeordet skal have tal.");
+        }
+        return false;
+    }
+
+    public static boolean validatePassword(String password) {
+        boolean i = checkNumeric(password);
+        boolean j = checkLength(password);
+        boolean k = checkUpperCase(password);
+        if (i && j && k) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static boolean checkEmailAt(String email) {
+        for (int i = 0; i < email.length(); i++) {
+            if (email.charAt(i) == '@') {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
