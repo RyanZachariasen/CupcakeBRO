@@ -49,14 +49,14 @@
                 <p>Customize your own cupcake!</p>
                 <form th:action="@{/makecupcake}" method="post">
                     <select id="dropDownList" name="toppingsID">
-                        <option value="0">select toppings</option>
+                        <option value="0">Select Toppings</option>
                         <option th:each="topping : ${toppingsList}"
                                 th:text="${topping.toppingname +' - '+topping.toppingprice + ' DKK'}"
                                 th:value="${topping.toppingsID}"></option>
                     </select>
 
                     <select id="dropDownListBottom" name="bottomsID">
-                        <option value="0">Select bottoms</option>
+                        <option value="0">Select Bottoms</option>
                         <option th:each="bottom : ${bottomsList}"
                                 th:text="${bottom.bottomsName +' - '+ bottom.bottomsPrice + ' DKK'}"
                                 th:value="${bottom.bottomsID}"></option>
@@ -64,7 +64,7 @@
 
                     <label for="quantity">Add Quantity:</label>
                     <input type="number" id="quantity" name="quantity" required>
-                    <button style="width:auto;" onclick="goBack()">Add</button>
+                    <button style="width:auto;" onclick="goBack()">Add to cart</button>
                 </form>
             </div>
         </div>
