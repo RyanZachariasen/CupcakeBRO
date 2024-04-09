@@ -6,13 +6,13 @@
     <link rel="stylesheet" href="../public/css/styles.css" th:href="@{/css/styles.css}">
 </head>
 <body>
-<div class="card-image">
-    <header>
+
+<div class ="box-square">
+<div class="boxtitle">
+
         <a href="wallet.html" th:href="@{/}">
-            <img alt="logo" src="../public/images/cupcakelogo.png" th:src="@{/images/cupcakelogo.png}">
+            <img alt="logo" src="../public/images/baggss.png" th:src="@{/images/baggss.png}">
         </a>
-    </header>
-</div>
 
 <div th:if="${session.currentUser != null}">
     <p>Wallet Balance: <span th:text="${session.currentUser.wallet}"></span></p>
@@ -23,7 +23,8 @@
         <button style="width:auto;" type="submit">Add</button>
     </form>
 </div>
-
+</div>
+</div>
 <button style="width:auto;" onclick = "goBack()">Go back</button>
 
 <script>

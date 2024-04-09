@@ -35,6 +35,7 @@ public class Main {
         ToppingsController.addRoutes(app, connectionPool);
         BottomsController.addRoutes(app, connectionPool);
         OrderController.addRoutes(app,connectionPool);
+        OrderLineDetailsController.addRoutes(app, connectionPool);
       /*  int userID = 3; // Example userID
         int quantity = 2; // Example quantity
         int toppingsID = 1; // Example toppingsID
