@@ -1,0 +1,20 @@
+@startuml
+'https://plantuml.com/activity-diagram-beta
+
+|Kunde|
+start
+|Kunde|
+:Tag til Olsker cupcakes;
+
+
+|Butik|
+:Bag cupcakes;
+:Cupcakes]
+:Pak cupcakes;
+:Hent cupcakes;
+
+
+stop
+
+
+@enduml

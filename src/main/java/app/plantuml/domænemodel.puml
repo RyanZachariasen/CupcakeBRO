@@ -1,0 +1,45 @@
+@startuml
+!pragma layout smetana
+'https://plantuml.com/sequence-diagram
+
+Title Domænemodel
+
+hide circle
+hide methods
+
+class CupcakeStore
+class Customer {
+email
+kodeord
+rolle
+}
+class Order {
+id
+orderline_ID
+}
+class Orderline {
+toppings_ID
+bottoms_ID
+quantity
+}
+class Toppings {
+id
+name
+price
+}
+class Bottoms {
+id
+name
+price
+}
+
+CupcakeStore "1"-right-"*" Customer
+CupcakeStore "1"-right-"*" Order
+
+Customer "1"-right-"*" Order
+Order "1"-right-"*" Orderline
+
+Orderline "*"-right-"1" Toppings
+Orderline "*"-right-"1" Bottoms
+
+@enduml

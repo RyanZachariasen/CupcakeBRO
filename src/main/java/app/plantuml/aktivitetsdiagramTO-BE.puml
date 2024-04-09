@@ -1,0 +1,47 @@
+@startuml
+'https://plantuml.com/activity-diagram-beta
+
+|Kunde|
+start
+:Gå til website;
+
+|#lightpink|Website|
+
+if (Har du en bruger?) then (Ja)
+->Ja;
+:Login;
+repeat
+:Indtast email og kodeord;
+repeat while (Korrekt indtastning?) is (Nej)
+->Ja;
+else (Nej)
+:Opret bruger;
+repeat
+:Indtast email og kodeord;
+repeat while (Opfylder indtastning kravene?) is (Nej)
+->Ja;
+endif
+
+|Kunde|
+:Tilføj penge til wallet;
+:Bestil cupcakes;
+
+|Website|
+:Gem ordre;
+:Videresend ordre;
+
+fork
+|Kunde|
+:Tag til Olsker cupcakes;
+fork again
+|Butik|
+:Bag cupcakes;
+:Cupcakes]
+:Pak cupcakes;
+end fork
+:Hent cupcakes;
+
+
+stop
+
+@enduml
