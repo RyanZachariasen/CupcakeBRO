@@ -1,0 +1,63 @@
+@startuml
+!pragma layout smetana
+'https://plantuml.com/state-diagram
+state frontpage
+state createuser
+state login
+state adminLoggedIn
+state c <<choice>>
+
+
+[*]--> frontpage
+frontpage-->createuser : on click : create user
+
+createuser--> c
+c--> frontpage:if valid
+c--> createuser : if invalid
+
+frontpage--> login : on click : login
+login--> frontpage : on click : outside popup window
+
+
+state c2 <<choice>>
+login-->c2 : on click : login
+c2-->loggedIn : if normal user
+c2--> adminLoggedIn : if user is admin
+
+
+state adminLoggedIn{
+
+[*]-->adminhomepage
+state adminhomepage: make cupcake and navigate
+state adminorders : see your own orders
+state adminwallet : add money to wallet
+state adminpage : search customers to see orders
+state cupcake : customize cupcake
+
+
+adminhomepage-->adminorders : on orders
+adminorders--> adminhomepage : on click : back
+
+adminhomepage--> adminwallet : on wallet
+adminwallet--> adminhomepage : on back
+
+adminhomepage--> adminpage : on adminpage
+adminpage--> adminhomepage : on back : go back
+adminhomepage --> cupcake : on add : add cupcake to order
+
+}
+
+
+state loggedIn{
+state homepage :make cupcake and navigate
+state orders: see your own orders
+state wallet: add money to wallet
+
+[*]-->homepage
+homepage-->orders : on click : order
+orders--> homepage : on click : button
+
+homepage--> wallet : on click : wallet
+wallet--> homepage : on click : back
+}
+@enduml
