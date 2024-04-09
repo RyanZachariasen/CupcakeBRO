@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <meta charset="UTF-8">
+    <title>Homepage</title>
+    <link rel="stylesheet" href="../public/css/styles.css" th:href="@{/css/styles.css}">
+</head>
+<body>
+
+
+<a th:if="${session.currentUser.getEmail}"></a>
+
+<div class="boxtitle">
+
+    <div>
+        <img alt="logo" src="../public/images/olskerlogo.png" th:src="@{/images/olskerlogo.png}">
+    </div>
+    <div th:if="${session.currentUser}">
+        <p>Welcome, <span th:text="${session.currentUser.email}"></span>!</p>
+        <div th:if="${session.currentUser != null}">
+            <p>Your current wallet balance: <span th:text="${session.currentUser.wallet}"></span> DKK</p>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+
+</body>
+</html>

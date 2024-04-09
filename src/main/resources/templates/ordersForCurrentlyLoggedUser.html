@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Orders for Currently Logged User</title>
+    <link rel="stylesheet" href="../public/css/styles.css" th:href="@{/css/styles.css}">
+</head>
+<body>
+
+<header>Welcome to Olsker Cupcakes!</header>
+
+<div>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Order ID</th>
+            <th>Quantity</th>
+            <th>Topping Name</th>
+            <th>Topping Price</th>
+            <th>Bottom Name</th>
+            <th>Bottom Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Iterate over the list of order lines -->
+        <tr th:each="orderLine : ${ordersList}">
+            <td th:text="${orderLine.orderID}"></td>
+            <td th:text="${orderLine.quantity}"></td>
+            <td th:text="${orderLine.toppingName}"></td>
+            <td th:text="${orderLine.toppingPrice}"></td>
+            <td th:text="${orderLine.bottomName}"></td>
+            <td th:text="${orderLine.bottomPrice}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

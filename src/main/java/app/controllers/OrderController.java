@@ -1,5 +1,6 @@
 package app.controllers;
 
+import app.entities.Order;
 import app.entities.OrderLine;
 import app.entities.User;
 import app.exceptions.DatabaseException;
@@ -10,11 +11,33 @@ import app.persistence.UserMapper;
 import io.javalin.Javalin;
 import io.javalin.http.Context;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 public class OrderController {
 
     public static void addRoutes(Javalin app, ConnectionPool connectionPool) {
         app.post("/makecupcake", ctx -> makeCupcake(ctx, connectionPool));
         app.get("/makecupcake", ctx -> ctx.render("homepage.html"));
+        app.post("/ordersForCurrentlyLoggedUser", ctx -> getAllOrdersForCurrentUser(ctx, connectionPool));
+        app.get("/ordersForCurrentlyLoggedUser", ctx -> ctx.render("ordersForCurrentlyLoggedUser.html"));
+
+    }
+
+    private static void getAllOrdersForCurrentUser(Context ctx, ConnectionPool connectionPool) {
+        User currentUser = ctx.sessionAttribute("currentUser");
+        if (currentUser == null) {
+            ctx.status(401).result("Unauthorized");
+            return;
+        }
+
+        try {
+            List<Order> orderList = OrderMapper.getAllOrdersForCurrentUser(currentUser.getUserID(), connectionPool);
+            ctx.render("ordersForCurrentlyLoggedUser.html");
+        } catch (DatabaseException e) {
+            ctx.status(500).result("Error retrieving orders for the current user.");
+        }
     }
 
 

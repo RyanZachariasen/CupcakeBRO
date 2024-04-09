@@ -9,8 +9,7 @@
 <body>
 
 
-
-<a th:if="${session.currentUser.getEmail}" ></a>
+<a th:if="${session.currentUser.getEmail}"></a>
 
 <div class="boxtitle">
 
@@ -19,64 +18,69 @@
     </div>
     <div th:if="${session.currentUser}">
         <p>Welcome, <span th:text="${session.currentUser.email}"></span>!</p>
-    </div>
-    <div class="options">
-        <a href="#" th:href="@{/dummyhomepage}">Dummy Homepage</a>
-        <a href="orderlinedetails.html" th:href="@{/orderlinedetails}">Dummy Orders</a>
-        <a th:if="${session.currentUser.role == 'admin'}" href="adminpage.html" th:href="@{adminpage}">Admin page</a>
-        <a href="wallet.html" th:href="@{wallet}">Add money to wallet</a>
-        <i href="#" th:href="@{/dummycart}" class="fa fa-shopping-cart fa-2x"></i>
-    </div>
-
-</div>
-<div class = "head-image">
-<img alt="logo" src="../public/images/bakemyday.png" th:src="@{/images/bakemyday.png}">
-</div>
-
-<!--<div th:if="${session.currentUser != null && session.currentUser.role == 'admin'}">
-    <p>Welcome, Admin!</p>
-</div>-->
-
-<div class="boxcontent">
-    <div class="center-content">
-        <div class="cupcake-customization">
-            <p>Customize your own cupcake!</p>
-            <form th:action="@{/makecupcake}" method="post">
-        <select id="dropDownList" name="toppingsID">
-            <option value="0">select toppings</option>
-            <option th:each="topping : ${toppingsList}" th:text="${topping.toppingname +' - '+topping.toppingprice}" th:value="${topping.toppingsID}"></option>
-        </select>
-
-        <select id="dropDownListBottom" name="bottomsID">
-            <option value="0">Select bottoms</option>
-            <option th:each="bottom : ${bottomsList}" th:text="${bottom.bottomsName +' - '+ bottom.bottomsPrice}" th:value="${bottom.bottomsID}"></option>
-        </select>
-
-        <label for="quantity">Add Quantity:</label>
-        <input type="number" id="quantity" name="quantity" required>
-        <button style="width:auto;" onclick="goBack()">Add</button>
-            </form>
+        <div th:if="${session.currentUser != null}">
+            <p>Your current wallet balance: <span th:text="${session.currentUser.wallet}"></span> DKK</p>
         </div>
     </div>
-</div>
-<div class ="productgrid">
-    <img  src="../public/images/cardslidecopy.png" th:src="@{/images/cardslidecopy.png}">
-    <img  src="../public/images/cardslidecopy.png" th:src="@{/images/cardslidecopy.png}">
-    <img  src="../public/images/cardslidecopy.png" th:src="@{/images/cardslidecopy.png}">
-    <img  src="../public/images/cardslidecopy.png" th:src="@{/images/cardslidecopy.png}">
-</div>
+        <div class="options">
+            <a href="#" th:href="@{/dummyhomepage}">Dummy Homepage</a>
+            <a href="orderlinedetails.html" th:href="@{orderlinedetails}">Your Orders</a>
+            <a th:if="${session.currentUser.role == 'admin'}" href="adminpage.html" th:href="@{adminpage}">Admin
+                page</a>
+            <a href="wallet.html" th:href="@{wallet}">Add money to wallet</a>
+            <i href="#" class="fa fa-shopping-cart fa-2x"></i>
+        </div>
 
-<br>
-<br>
+    </div>
+    <div class="head-image">
+        <img alt="logo" src="../public/images/bakemyday.png" th:src="@{/images/bakemyday.png}">
+    </div>
 
-<p>For kontakt : <br> Skriv til Otto Dyva på Instagram med @otto.dyva</p>
-<p>For klage :<br> Skriv til Bekhan Husejnovich Mahauri </p>
-<p>Brug for øl? <br> Skriv til Ryan Niaina Zachariasen ;- )</p>
-<script>
-    function goBack() {
-        window.history.back();
-    }
-</script>
+
+    <div class="boxcontent">
+        <div class="center-content">
+            <div class="cupcake-customization">
+                <p>Customize your own cupcake!</p>
+                <form th:action="@{/makecupcake}" method="post">
+                    <select id="dropDownList" name="toppingsID">
+                        <option value="0">select toppings</option>
+                        <option th:each="topping : ${toppingsList}"
+                                th:text="${topping.toppingname +' - '+topping.toppingprice + ' DKK'}"
+                                th:value="${topping.toppingsID}"></option>
+                    </select>
+
+                    <select id="dropDownListBottom" name="bottomsID">
+                        <option value="0">Select bottoms</option>
+                        <option th:each="bottom : ${bottomsList}"
+                                th:text="${bottom.bottomsName +' - '+ bottom.bottomsPrice + ' DKK'}"
+                                th:value="${bottom.bottomsID}"></option>
+                    </select>
+
+                    <label for="quantity">Add Quantity:</label>
+                    <input type="number" id="quantity" name="quantity" required>
+                    <button style="width:auto;" onclick="goBack()">Add</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="productgrid">
+        <img src="../public/images/cardslidecopy.png" th:src="@{/images/cardslidecopy.png}">
+        <img src="../public/images/cardslidecopy.png" th:src="@{/images/cardslidecopy.png}">
+        <img src="../public/images/cardslidecopy.png" th:src="@{/images/cardslidecopy.png}">
+        <img src="../public/images/cardslidecopy.png" th:src="@{/images/cardslidecopy.png}">
+    </div>
+
+    <br>
+    <br>
+
+    <p>For kontakt : <br> Skriv til Otto Dyva på Instagram med @otto.dyva</p>
+    <p>For klage :<br> Skriv til Bekhan Husejnovich Mahauri </p>
+    <p>Brug for øl? <br> Skriv til Ryan Niaina Zachariasen ;- )</p>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
 
 </body>
 </html>

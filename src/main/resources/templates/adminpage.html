@@ -1,22 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Admin page</title>
+    <title>Order Line Details</title>
     <link rel="stylesheet" href="../public/css/styles.css" th:href="@{/css/styles.css}">
 </head>
 <body>
-<header>Welcome to Olsker Cupcakes!</header>
 
+<h1>Order Line Details</h1>
 
+<form th:action="@{/allorderlinedetails}" method="post">
+    <label for="email">Enter User Email:</label>
+    <input type="text" id="email" name="email" required>
+    <button type="submit">Search</button>
+</form>
 
-<button style="width:auto;" onclick = "goBack()">Go back</button>
-
-<script>
-    function goBack() {
-        window.history.back();
-    }
-</script>
+<table>
+    <thead>
+    <tr>
+        <th>Quantity</th>
+        <th>Topping</th>
+        <th>Topping Price</th>
+        <th>Bottom</th>
+        <th>Bottom Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="orderLineDetails : ${orderLine}">
+        <td th:text="${orderLineDetails.quantity}"></td>
+        <td th:text="${orderLineDetails.toppingName}"></td>
+        <td th:text="${orderLineDetails.toppingPrice}"></td>
+        <td th:text="${orderLineDetails.bottomName}"></td>
+        <td th:text="${orderLineDetails.bottomPrice}"></td>
+    </tr>
+    </tbody>
+</table>
 
 </body>
 </html>

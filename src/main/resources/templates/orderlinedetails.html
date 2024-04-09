@@ -2,13 +2,13 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>Order Line Details</title>
+  <title>orderlinedetails</title>
   <link rel="stylesheet" href="../public/css/styles.css" th:href="@{/css/styles.css}">
 </head>
 <body>
 
-<h1>Order Line Details</h1>
-<form  method="post">
+<h1>Your orders so far</h1>
+<form  method="post" th:action="@{/orderlinedetails}">
 <table>
   <thead>
   <tr>
@@ -20,12 +20,12 @@
   </tr>
   </thead>
   <tbody>
-  <tr th:each="orderLine : ${orderLine}">
-    <td th:text="${orderLine.quantity}"></td>
-    <td th:text="${orderLine.toppingName}"></td>
-    <td th:text="${orderLine.toppingPrice}"></td>
-    <td th:text="${orderLine.bottomName}"></td>
-    <td th:text="${orderLine.bottomPrice}"></td>
+  <tr th:each="orderLineDetails : ${orderLine}">
+    <td th:text="${orderLineDetails.quantity}"></td>
+    <td th:text="${orderLineDetails.toppingName}"></td>
+    <td th:text="${orderLineDetails.toppingPrice + ' DKK'}"></td>
+    <td th:text="${orderLineDetails.bottomName}"></td>
+    <td th:text="${orderLineDetails.bottomPrice + ' DKK'}"></td>
   </tr>
   </tbody>
 </table>
@@ -39,20 +39,6 @@
 <script>
   function goBack() {
     window.history.back();
-    window.history.back();
   }
 </script>
 
-<script>
-  function goBack() {
-    window.history.back();
-    window.history.back();
-  }
-</script>
-
-<script>
-  function goBack() {
-    window.history.back();
-    window.history.back();
-  }
-</script>

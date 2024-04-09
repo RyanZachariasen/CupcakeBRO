@@ -60,6 +60,7 @@ public class UserController {
 
     public static void login(Context ctx, ConnectionPool connectionPool) {
         //Hent form parametre
+        System.out.println("NU ER DU LOGGET IND ");
         String email = ctx.formParam("email");
         String password = ctx.formParam("password");
 
@@ -71,7 +72,6 @@ public class UserController {
             ctx.attribute("role", user.getRole());
 
             ctx.attribute("wallet", user.getWallet());
-
 
             renderHomePage(ctx, connectionPool);
             ctx.render("/homepage");
@@ -97,7 +97,7 @@ public class UserController {
             ctx.render("wallet.html");
         } catch (DatabaseException e) {
             ctx.attribute("message", "Kunne ikke tilføje penge til wallet.");
-            //ctx.render("homepage.html");
+            ctx.render("homepage.html");
         }
     }
 

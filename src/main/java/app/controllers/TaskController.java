@@ -1,12 +1,12 @@
 package app.controllers;
 
+/*
 import app.entities.Bottoms;
 import app.entities.Task;
 import app.entities.User;
 import app.exceptions.DatabaseException;
 import app.persistence.BottomsMapper;
 import app.persistence.ConnectionPool;
-import app.persistence.TaskMapper;
 import io.javalin.Javalin;
 import io.javalin.http.Context;
 
@@ -99,3 +99,4 @@ public class TaskController {
 
 }
 
+*/
