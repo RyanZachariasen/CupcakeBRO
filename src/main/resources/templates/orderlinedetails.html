@@ -20,6 +20,7 @@
     <th>Topping Price</th>
     <th>Bottom</th>
     <th>Bottom Price</th>
+    <th>Order Price :</th>
   </tr>
   </thead>
   <tbody>
@@ -29,6 +30,7 @@
     <td th:text="${orderLineDetails.toppingPrice + ' DKK'}"></td>
     <td th:text="${orderLineDetails.bottomName}"></td>
     <td th:text="${orderLineDetails.bottomPrice + ' DKK'}"></td>
+    <td th:text="${orderLineDetails.totalPrice + ' DKK'}"></td>
   </tr>
   </tbody>
 </table>

@@ -6,13 +6,15 @@ public class OrderLineDetails {
     private int toppingPrice;
     private String bottomName;
     private int bottomPrice;
+    private int totalPrice;
 
-    public OrderLineDetails(int quantity, String toppingName, int toppingPrice, String bottomName, int bottomPrice) {
+    public OrderLineDetails(int quantity, String toppingName, int toppingPrice, String bottomName, int bottomPrice, int totalPrice) {
         this.quantity = quantity;
         this.toppingName = toppingName;
         this.toppingPrice = toppingPrice;
         this.bottomName = bottomName;
         this.bottomPrice = bottomPrice;
+        this.totalPrice = totalPrice;
     }
 
     public int getQuantity() {
@@ -53,6 +55,9 @@ public class OrderLineDetails {
 
     public void setBottomPrice(int bottomPrice) {
         this.bottomPrice = bottomPrice;
+    }
+    public int getTotalPrice() {
+        return quantity*(bottomPrice+toppingPrice);
     }
 
     @Override
