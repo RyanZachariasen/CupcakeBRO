@@ -1,5 +1,13 @@
 /* General Styles */
+.wallet-placement{
+    text-align: left;
+    padding: 2px;
+    border-radius: 5px;
+    width: 20%;
+    display: flex;
 
+
+}
 .card-image {
     max-width: 100%;
     height: auto;

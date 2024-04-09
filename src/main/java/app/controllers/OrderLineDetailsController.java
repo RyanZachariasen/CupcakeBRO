@@ -1,6 +1,5 @@
 package app.controllers;
 
-import app.entities.Order;
 import app.entities.OrderLine;
 import app.entities.OrderLineDetails;
 import app.entities.User;
@@ -24,7 +23,6 @@ public class OrderLineDetailsController {
 
     public static void getOrderLineDetails(Context ctx, ConnectionPool connectionPool) throws DatabaseException {
         // Retrieve the userID from the current session
-        System.out.println("NU ER DU I GETORDERLINEDETAILS I CONTROLLEREN");
 
         User currentUser = ctx.sessionAttribute("currentUser");
 
