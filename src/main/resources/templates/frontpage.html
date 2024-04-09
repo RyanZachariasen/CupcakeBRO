@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <link href="../public/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
+<link href="../public/css/styles2.css" th:href="@{/css/styles2.css}" rel="stylesheet2"/>
+
+
 <head>
     <meta charset="UTF-8" content="width=device-width, initial-scale=1">
     <title>Olsker Cupcakes</title>
@@ -9,13 +12,26 @@
 <div class="card-image">
     <header>
         <a href="frontpage.html" th:href="@{/}">
-            <img alt="logo" src="../public/images/cupcakelogo.png" th:src="@{/images/cupcakelogo.png}">
+            <img alt="logo" src="../public/images/cupcakeheader.png" th:src="@{/images/cupcakeheader.png}">
         </a>
     </header>
+</div>
+<div class="welcome-box">
+
+    <h1>
+        Welcome to <br>
+        Olsker Cupcakes!
+    </h1>
+    <h3>Which of the following would you like to do?</h3>
+<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+<a href="createuser.html" th:href="@{createuser}"><button style="width:auto;">Create user</button></a>
+
+</div>
+<div class = "border-form">
 
     <div class="tables-container">
         <table>
-            <caption>The Bottoms</caption>
+
             <thead>
             <tr>
                 <th>Bottom</th>
@@ -47,7 +63,7 @@
         </table>
 
         <table>
-            <caption>The Toppings</caption>
+
             <thead>
             <tr>
                 <th>Topping</th>
@@ -94,17 +110,7 @@
             </tbody>
         </table>
     </div>
-
-
-    <h1>
-        Olsker Cupcakes!
-    </h1>
 </div>
-<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
-<a href="createuser.html" th:href="@{createuser}"><button style="width:auto;">Create user</button></a>
-
-
-
 
 <div id="id01" class="modal">
 
