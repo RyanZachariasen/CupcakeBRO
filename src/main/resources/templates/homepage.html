@@ -19,6 +19,7 @@
     </div>
     <div th:if="${session.currentUser}">
         <p>Welcome, <span th:text="${session.currentUser.email}"></span>!</p>
+
     </div>
     <div th:if="${session.currentUser != null}">
         <p th:if="${session.currentUser != null}">Your current wallet balance: <span th:text="${session.currentUser.wallet}"></span> DKK</p>
