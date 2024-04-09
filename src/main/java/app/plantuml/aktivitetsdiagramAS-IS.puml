@@ -6,11 +6,21 @@ start
 |Kunde|
 :Tag til Olsker cupcakes;
 
+:Bestil ved kassen;
 
+|#lightpink|Butik|
+:Tag imod ordre;
+
+fork
+|Kunde|
+:Vent på at ordren er færdig;
+fork again
 |Butik|
 :Bag cupcakes;
 :Cupcakes]
 :Pak cupcakes;
+end fork
+|Kunde|
 :Hent cupcakes;
 
 
