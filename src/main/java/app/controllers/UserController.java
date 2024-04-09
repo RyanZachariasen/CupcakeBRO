@@ -24,6 +24,7 @@ public class UserController {
         app.get("wallet", ctx -> ctx.render("wallet.html"));
         app.get("homepage", ctx -> ctx.render("homepage.html"));
         app.get("adminpage", ctx -> ctx.render("adminpage.html"));
+        app.get("cart", ctx -> ctx.render("cart.html"));
     }
 
     private static void createUser(Context ctx, ConnectionPool connectionPool) {

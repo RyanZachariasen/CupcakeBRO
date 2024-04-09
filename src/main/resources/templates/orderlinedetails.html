@@ -8,6 +8,9 @@
 <body>
 
 <h1>Your orders so far</h1>
+<a th:if="${session.currentUser.getEmail}"></a>
+<p>Welcome, <span th:text="${session.currentUser.email}"></span>!</p>
+
 <form  method="post" th:action="@{/orderlinedetails}">
 <table>
   <thead>

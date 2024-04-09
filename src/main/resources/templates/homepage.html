@@ -28,14 +28,17 @@
             <a th:if="${session.currentUser.role == 'admin'}" href="adminpage.html" th:href="@{adminpage}">Admin
                 page</a>
             <a href="wallet.html" th:href="@{wallet}">Add money to wallet</a>
+
+            <a href="cart.html" th:href="@{cart}">
             <i href="#" class="fa fa-shopping-cart fa-2x"></i>
+            </a>
+
         </div>
 
     </div>
     <div class="head-image">
         <img alt="logo" src="../public/images/bakemyday.png" th:src="@{/images/bakemyday.png}">
     </div>
-
 
     <div class="boxcontent">
         <div class="center-content">

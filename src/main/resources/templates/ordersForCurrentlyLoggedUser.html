@@ -7,6 +7,9 @@
 </head>
 <body>
 
+<a th:if="${session.currentUser.getEmail}"></a>
+<p>Welcome, <span th:text="${session.currentUser.email}"></span>!</p>
+
 <header>Welcome to Olsker Cupcakes!</header>
 
 <div>
