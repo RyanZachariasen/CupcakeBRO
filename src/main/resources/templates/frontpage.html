@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <link href="../public/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
-<link href="../public/css/styles2.css" th:href="@{/css/styles2.css}" rel="stylesheet2"/>
-
 
 <head>
     <meta charset="UTF-8" content="width=device-width, initial-scale=1">
@@ -145,10 +143,8 @@
 </div>
 
 <script>
-    // Get the modal
     const modal = document.getElementById('id01');
 
-    // When the user clicks anywhere outside the modal, close it
     window.onclick = function(event) {
         if (event.target === modal) {
             modal.style.display = "none";
