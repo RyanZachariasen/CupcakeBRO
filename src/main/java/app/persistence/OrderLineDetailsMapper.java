@@ -40,7 +40,7 @@ public class OrderLineDetailsMapper {
                 int toppingPrice = rs.getInt("toppingprice");
                 String bottomName = rs.getString("bottomname");
                 int bottomPrice = rs.getInt("bottomprice");
-                int totalPrice = quantity*(bottomPrice+toppingPrice);
+                int totalPrice = quantity * (bottomPrice + toppingPrice);
                 OrderLineDetails orderLineDetails = new OrderLineDetails(quantity, toppingName, toppingPrice, bottomName, bottomPrice, totalPrice);
                 orderLineDetailsList.add(orderLineDetails);
             }
@@ -76,8 +76,8 @@ public class OrderLineDetailsMapper {
                 int toppingPrice = rs.getInt("toppingprice");
                 String bottomName = rs.getString("bottomname");
                 int bottomPrice = rs.getInt("bottomprice");
-                int totalPrice = quantity*(bottomPrice+toppingPrice);
-                OrderLineDetails orderLineDetails = new OrderLineDetails(quantity, toppingName, toppingPrice, bottomName, bottomPrice,totalPrice);
+                int totalPrice = quantity * (bottomPrice + toppingPrice);
+                OrderLineDetails orderLineDetails = new OrderLineDetails(quantity, toppingName, toppingPrice, bottomName, bottomPrice, totalPrice);
                 orderLineDetailsList.add(orderLineDetails);
             }
         } catch (SQLException e) {
@@ -86,7 +86,6 @@ public class OrderLineDetailsMapper {
 
         return orderLineDetailsList;
     }
-
 
 
 }

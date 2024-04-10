@@ -3,7 +3,7 @@
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <meta charset="UTF-8">
-    <title>Homepage</title>
+    <title>Cart</title>
     <link rel="stylesheet" href="../public/css/styles.css" th:href="@{/css/styles.css}">
 </head>
 <body>
@@ -24,6 +24,32 @@
         </div>
     </div>
 
+
+
+    <form  method="post" th:action="@{/orderlinedetailsforcart}">
+        <table>
+            <thead>
+            <tr>
+                <th>Quantity</th>
+                <th>Topping</th>
+                <th>Topping Price</th>
+                <th>Bottom</th>
+                <th>Bottom Price</th>
+                <th>Order Price</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="orderLineDetails : ${orderLine}">
+                <td th:text="${orderLineDetails.quantity}"></td>
+                <td th:text="${orderLineDetails.toppingName}"></td>
+                <td th:text="${orderLineDetails.toppingPrice + ' DKK'}"></td>
+                <td th:text="${orderLineDetails.bottomName}"></td>
+                <td th:text="${orderLineDetails.bottomPrice + ' DKK'}"></td>
+                <td th:text="${orderLineDetails.totalPrice + ' DKK'}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
 
 
 </div>
