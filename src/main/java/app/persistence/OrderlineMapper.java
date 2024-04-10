@@ -36,20 +36,6 @@ public class OrderlineMapper {
             throw new DatabaseException(msg, e.getMessage());
         }
     }
-
-    public static void orderOrderline(int quantity, int toppingsID, int bottomsID, int userID, ConnectionPool connectionPool ){
-
-        try {
-            int orderID = OrderMapper.createOrderID(userID, connectionPool);
-
-            OrderlineMapper.createOrderline(quantity, toppingsID, bottomsID, orderID, connectionPool);
-
-        } catch (DatabaseException e) {
-            // Handle exception
-            e.printStackTrace(); // This will print the exception details to the console
-        }
-    }
-
-    }
+}
 
 
