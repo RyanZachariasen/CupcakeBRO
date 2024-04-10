@@ -9,18 +9,18 @@ state c <<choice>>
 
 
 [*]--> frontpage
-frontpage-->createuser : on click : create user
+frontpage-->createuser : on  create user
 
 createuser--> c
 c--> frontpage:if valid
 c--> createuser : if invalid
 
-frontpage--> login : on click : login
-login--> frontpage : on click : outside popup window
+frontpage--> login : on  login
+login--> frontpage : on  outside popup window
 
 
 state c2 <<choice>>
-login-->c2 : on click : login
+login-->c2 : on  login
 c2-->loggedIn : if normal user
 c2--> adminLoggedIn : if user is admin
 
@@ -36,14 +36,14 @@ state cupcake : customize cupcake
 
 
 adminhomepage-->adminorders : on orders
-adminorders--> adminhomepage : on click : back
+adminorders--> adminhomepage : on  back
 
 adminhomepage--> adminwallet : on wallet
 adminwallet--> adminhomepage : on back
 
 adminhomepage--> adminpage : on adminpage
-adminpage--> adminhomepage : on back : go back
-adminhomepage --> cupcake : on add : add cupcake to order
+adminpage--> adminhomepage : on back
+adminhomepage --> cupcake : on add
 
 }
 
@@ -54,10 +54,10 @@ state orders: see your own orders
 state wallet: add money to wallet
 
 [*]-->homepage
-homepage-->orders : on click : order
-orders--> homepage : on click : button
+homepage-->orders : on  order
+orders--> homepage : on button
 
-homepage--> wallet : on click : wallet
-wallet--> homepage : on click : back
+homepage--> wallet : on  wallet
+wallet--> homepage : on back
 }
 @enduml
